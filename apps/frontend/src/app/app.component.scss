@@ -1,8 +1,63 @@
 :host {
     display: flex;
+    flex-direction: column;
+}
+
+header{
+    background: #003B7C;
+    background: url(../assets/img/Header_Default.svg);
+    background-position: center;
+    border-top: 46px solid #032850;
+    height: 175px;
+
+    h1{
+            text-align: center;
+            background: white;
+            padding: 0.5em 1em;
+            border-radius: 25px;
+            width: fit-content;
+            margin: 0 auto;
+            margin-top: 1em;
+    }
+}
+
+.content-wrapper{
+    display: flex;
+    justify-content: center;
+
+    .spider-list{
+        width: 30%;
+        margin: 1em;
+        margin-right: 0;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+    }
+
 }
 
 .details {
     display: flex;
     flex-direction: column;
+    width: 70%;
+    margin: 1em;
+    margin-left: 0;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+
+    .spider-header{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        border-bottom: 1px solid #ddd;
+        padding-top: 1em;
+    }
+
+    .spider-control{
+        margin: 0.5em;
+        padding-bottom: 1em;
+    }
+
+    .mat-form-field{
+        width: 90%;
+    }
 }

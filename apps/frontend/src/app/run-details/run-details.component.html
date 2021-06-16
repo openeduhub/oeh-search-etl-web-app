@@ -1,4 +1,16 @@
-<p>run-details works!</p>
 
-{{ run.state }}
-{{ log }}
+<div class="run-datails-wrapper">
+    <div class="run-datails-state">
+        {{ run.state }}
+    </div>
+    <div class="run-details-log">
+        <h3>Current Log:</h3>
+        <hr>
+        <pre class="run-details-log-scroll">
+            {{ log }}
+        </pre>
+    </div>
+</div>
+
+
+

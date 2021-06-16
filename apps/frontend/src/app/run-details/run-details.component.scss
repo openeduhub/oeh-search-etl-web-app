@@ -1,0 +1,30 @@
+
+.run-datails-wrapper {
+    padding: 0.5em;
+
+    .run-datails-state{
+        background-color: lightskyblue;
+        width: 50%;
+        margin: 1em auto;
+        padding: 0.5em;
+        text-align: center;
+        color: white;
+        font-weight: 500;
+        border-radius: 12px;
+    }
+
+    .run-details-log {
+        background-color: #fafafa;
+        padding: 1em;
+        width: 80%;
+        margin: 0 auto;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+
+        .run-details-log-scroll{
+            max-height: 60vh;
+            overflow-y: scroll;
+        }
+    }
+
+}
