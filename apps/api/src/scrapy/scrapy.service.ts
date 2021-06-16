@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { RunLogger, RunLogService } from '../run-log/run-log.service';
 
 @Injectable()
-export class ScrapyService {
+export class ScrapyService { 
     constructor(private readonly runLogService: RunLogService) {}
 
     getAvailableSpiders(): string[] {

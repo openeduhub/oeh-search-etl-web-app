@@ -1,9 +1,32 @@
-<div style="text-align: center">
-  <h1>Welcome to frontend!</h1>
-  <img
-    width="450"
-    src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png"
-    alt="Nx - Smart, Extensible Build Framework"
-  />
+<mat-selection-list
+    class="spider-list"
+    [multiple]="false"
+    (selectionChange)="
+        activeSpider.next(
+            $event.options.length === 1 ? $event.options[0].value : null
+        )
+    "
+>
+    <mat-list-option *ngFor="let spider of spiders$ | async" [value]="spider">
+        <mat-icon mat-list-icon>pest_control</mat-icon>
+        <div mat-line>{{ spider.name }}</div>
+        <div mat-line>
+            <ng-container *ngIf="spider.lastRun">
+                {{ spider.lastRun.startTime | date }}
+            </ng-container>
+        </div>
+    </mat-list-option>
+</mat-selection-list>
+
+<div class="details" *ngIf="activeSpider">
+    <ng-container *ngIf="activeSpiderRuns | async as runs">
+        <mat-form-field appearance="fill">
+            <mat-label>Spider run</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let run of runs" [value]="run.id">
+                    {{ run.startTime | date }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </ng-container>
 </div>
-<div>Message: {{ hello$ | async | json }}</div>

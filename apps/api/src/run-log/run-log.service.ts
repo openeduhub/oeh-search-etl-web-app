@@ -15,7 +15,7 @@ export class RunLogger {
     }
 
     appendLog(log: string): void {
-        throw new Error('not implemented');
+        throw new Error('not implemented');  
     }
 
     getData(): Observable<LogData> {
