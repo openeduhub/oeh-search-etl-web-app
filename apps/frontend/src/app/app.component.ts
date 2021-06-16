@@ -57,10 +57,17 @@ export class AppComponent {
     );
     selectedRun = new BehaviorSubject<SpiderRun | null>(null);
 
-
     constructor(private api: ApiService) {}
 
     onSpiderSelectionChange(event: MatSelectionListChange): void {
         console.log(event.options);
+    }
+
+    startSpider(spider: string): void {
+        this.api.startSpider(spider);
+    }
+
+    cancelSpider(spider: string): void {
+        this.api.cancelSpider(spider);
     }
 }

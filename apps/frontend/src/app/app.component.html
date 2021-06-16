@@ -24,6 +24,7 @@
             *ngIf="spider.lastRun?.state !== 'running'"
             mat-flat-button
             color="primary"
+            (click)="startSpider(spider.name)"
         >
             Start
         </button>
@@ -31,6 +32,7 @@
             *ngIf="spider.lastRun?.state === 'running'"
             mat-flat-button
             color="warn"
+            (click)="cancelSpider(spider.name)"
         >
             Cancel
         </button>
