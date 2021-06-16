@@ -18,15 +18,45 @@
     </mat-list-option>
 </mat-selection-list>
 
-<div class="details" *ngIf="activeSpider">
+<div class="details" *ngIf="activeSpider | async as spider">
+    <div class="spider-control">
+        <button
+            *ngIf="spider.lastRun?.state !== 'running'"
+            mat-flat-button
+            color="primary"
+        >
+            Start
+        </button>
+        <button
+            *ngIf="spider.lastRun?.state === 'running'"
+            mat-flat-button
+            color="warn"
+        >
+            Cancel
+        </button>
+    </div>
     <ng-container *ngIf="activeSpiderRuns | async as runs">
-        <mat-form-field appearance="fill">
+        <mat-form-field
+            appearance="fill"
+            *ngIf="runs.length > 0; else noRunsInfo"
+        >
             <mat-label>Spider run</mat-label>
-            <mat-select>
-                <mat-option *ngFor="let run of runs" [value]="run.id">
+            <mat-select
+                [value]="selectedRun | async"
+                (valueChange)="selectedRun.next($event)"
+            >
+                <mat-option *ngFor="let run of runs" [value]="run">
                     {{ run.startTime | date }}
                 </mat-option>
             </mat-select>
         </mat-form-field>
+        <ng-template #noRunsInfo
+            ><p>Spider has not been run yet.</p></ng-template
+        >
+        <oeh-search-etl-web-app-run-details
+            *ngIf="selectedRun | async as run"
+            [run]="run"
+            [log]="log"
+        ></oeh-search-etl-web-app-run-details>
     </ng-container>
 </div>
